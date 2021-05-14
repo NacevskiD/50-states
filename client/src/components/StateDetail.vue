@@ -32,6 +32,7 @@ export default {
     }
   },
   methods:{
+    //updating the amount of states visited proactively
     visitedChanged(){
       this.$emit('update-visited',this.state.name, this.visited)
     }

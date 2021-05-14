@@ -36,6 +36,7 @@ export default {
     this.fetchAllStates()
   },
   methods:{
+    //getting all the states from sql
     fetchAllStates(){
         this.$stateService.getAllStates().then( states=>{
           this.states = states
@@ -45,6 +46,7 @@ export default {
         console.error(err)
       })
     },
+    //setting which states we have visited
     updateVisited(stateName,visited){
       this.$stateService.setVisited(stateName,visited).then( () => {
         this.fetchAllStates()

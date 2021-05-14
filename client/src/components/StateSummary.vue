@@ -20,6 +20,7 @@ export default {
   computed:{
     totalVisited(){
       let visitedCount = 0
+      //adding +1 for every visited state
       this.states.forEach( state=>{
         if (state.visited){
           visitedCount++
@@ -34,6 +35,7 @@ export default {
         return "states"
       }
     },
+    //checking if all states are visited to display a special message
     areAllVisited(){
       return this.totalVisited===this.states.length
     }

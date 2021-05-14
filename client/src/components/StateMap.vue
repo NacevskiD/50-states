@@ -31,6 +31,7 @@ import {LMap,LTileLayer} from '@vue-leaflet/vue-leaflet'
     data(){
       return{
         state: {},
+        //setting data as false to begin with
         dataReady:false,
         mapReady: false
       }
@@ -41,10 +42,12 @@ import {LMap,LTileLayer} from '@vue-leaflet/vue-leaflet'
     },
     methods:{
       fetchStateData(){
+        //getting state data and changing boolean
         this.$stateService.getOneState(this.state.name).then(state =>{
           this.state=state
           this.dataReady = true
         }).catch(err =>{
+          // watching for error messages
           if (err.response&& err.response.status===404){
             this.state.name = '?'
           }else {
@@ -57,12 +60,14 @@ import {LMap,LTileLayer} from '@vue-leaflet/vue-leaflet'
         this.mapReady = true
       },
       setMapView(){
+        //checking if we have all the data and setting the map
         if (this.mapReady && this.dataReady){
             this.$refs.map.leafletObject.setView(this.mapCenter,this.zoom)
         }
       }
     },
     computed:{
+      //centering the map
       mapCenter(){
         return [this.state.lat, this.state.lon]
       }

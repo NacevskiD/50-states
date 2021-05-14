@@ -5,6 +5,7 @@ import StateMap from '@/components/StateMap'
 
 export default createRouter({
     history:createWebHashHistory(),
+    // defining different routes
     routes: [
         {
             path: '/',
